@@ -1,0 +1,19 @@
+{
+   "name": "compier",
+   "version": "1.0.14",
+   "description": "Create component structure for frameworks to improve code quality and maintainability",
+   "main": "compier.js",
+   "scripts": {
+      "compier": "node compier.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "keywords": [],
+   "author": "Aytac Guc <aytacguc@hotmail.com.tr>",
+   "license": "MIT",
+   "dependencies": {
+      "radash": "^12.1.0"
+   },
+   "bin": {
+      "compier": "compier.js"
+   }
+}
