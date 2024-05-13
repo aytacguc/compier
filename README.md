@@ -25,10 +25,11 @@ add compier to package.json
 npm run compier <componentName> [componentPath]
 ```
 
-<componentName>: The name of the Vue component to create.
-[componentPath] (optional): The directory path where the component will be created. If not provided, the component will be created in the "src/components/" directory by default.
+componentName: The name of the Vue component to create.
 
-## Vue Component Template
+componentPath(optional): The directory path where the component will be created. If not provided, the component will be created in the "src/components/" directory by default.
+
+## Usage/Examples
 
 You can use the following Vue component template as a starting point for your components:
 
