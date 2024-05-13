@@ -22,7 +22,7 @@ add compier to package.json
 ## Usage
 
 ```bash
-compier <componentName> [componentPath]
+npm run compier <componentName> [componentPath]
 ```
 
 <componentName>: The name of the Vue component to create.
