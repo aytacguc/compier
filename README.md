@@ -15,7 +15,7 @@ add compier to package.json
 
 ```js
 "scripts":{
-  "compier": "node compier.js",
+  "compier": "node ./node_modules/compier/compier.js"
 }
 ```
 
