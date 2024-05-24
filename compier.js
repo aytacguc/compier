@@ -6,6 +6,8 @@ Version: 1.0
 
 */
 // Current working directory excuted the script
+
+console.log("deneme");
 const rootPath = process.cwd();
 
 // process.argv[2] is a 3. argument of the command line. No arg ? Exit the process
@@ -27,6 +29,32 @@ const fs = require("fs");
 const path = require("path");
 const { dash, pascal } = require("radash");
 
+// Function to get the template file path
+const getTemplateFilePath = () => {
+   const configPath = path.join(rootPath, "reisetech.config.json");
+   let templateFilePath = path.join(__dirname, "template.vue"); // Default template file
+
+   if (fs.existsSync(configPath)) {
+      try {
+         const configContent = fs.readFileSync(configPath, "utf-8");
+         const config = JSON.parse(configContent);
+         if (config.compilerTemplateFile) {
+            templateFilePath = path.isAbsolute(config.compilerTemplateFile)
+               ? config.compilerTemplateFile
+               : path.join(rootPath, config.compilerTemplateFile);
+         }
+      } catch (error) {
+         console.error("Error reading or parsing reisetech.config:", error);
+         process.exit(1);
+      }
+   }
+
+   return templateFilePath;
+};
+
+// Get the template file path
+const templateFilePath = getTemplateFilePath();
+
 // Check if the componentPath exists, if not create it
 if (!fs.existsSync(componentPath)) {
    fs.mkdirSync(`${rootPath}/${componentPath}`, { recursive: true });
@@ -35,7 +63,7 @@ if (!fs.existsSync(componentPath)) {
 
 // Read the figJam for rules --> https://shorturl.at/buQ07
 const vueTemplate = fs
-   .readFileSync(`${__dirname}/template.vue`, "utf-8")
+   .readFileSync(templateFilePath, "utf-8")
    .toString()
    .replace(/dynamicClassName/g, dash(componentName))
    .replace(/ComponentName/g, pascal(componentName));
