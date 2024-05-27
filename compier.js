@@ -7,7 +7,6 @@ Version: 1.0
 */
 // Current working directory excuted the script
 
-console.log("deneme");
 const rootPath = process.cwd();
 
 // process.argv[2] is a 3. argument of the command line. No arg ? Exit the process
@@ -66,7 +65,7 @@ const vueTemplate = fs
    .readFileSync(templateFilePath, "utf-8")
    .toString()
    .replace(/dynamicClassName/g, dash(componentName))
-   .replace(/ComponentName/g, pascal(componentName));
+   .replace(/ComponentName/g, componentName);
 
 const fileName = `${componentName}.vue`;
 // Create a new file with the component name if doesn't exist

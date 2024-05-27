@@ -1,6 +1,6 @@
 {
    "name": "compier",
-   "version": "1.0.16",
+   "version": "1.0.17",
    "description": "Create component structure for frameworks to improve code quality and maintainability",
    "main": "compier.js",
    "scripts": {
