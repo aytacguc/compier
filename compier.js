@@ -37,10 +37,8 @@ const getTemplateFilePath = () => {
       try {
          const configContent = fs.readFileSync(configPath, "utf-8");
          const config = JSON.parse(configContent);
-         if (config.compilerTemplateFile) {
-            templateFilePath = path.isAbsolute(config.compilerTemplateFile)
-               ? config.compilerTemplateFile
-               : path.join(rootPath, config.compilerTemplateFile);
+         if (config.TEMPLATE_PATH) {
+            templateFilePath = path.isAbsolute(config.TEMPLATE_PATH) ? config.TEMPLATE_PATH : path.join(rootPath, config.TEMPLATE_PATH);
          }
       } catch (error) {
          console.error("Error reading or parsing reisetech.config:", error);
