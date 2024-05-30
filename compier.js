@@ -7,7 +7,6 @@ Version: 1.0
 */
 // Current working directory excuted the script
 
-console.log("deneme");
 const rootPath = process.cwd();
 
 // process.argv[2] is a 3. argument of the command line. No arg ? Exit the process
@@ -38,10 +37,8 @@ const getTemplateFilePath = () => {
       try {
          const configContent = fs.readFileSync(configPath, "utf-8");
          const config = JSON.parse(configContent);
-         if (config.compilerTemplateFile) {
-            templateFilePath = path.isAbsolute(config.compilerTemplateFile)
-               ? config.compilerTemplateFile
-               : path.join(rootPath, config.compilerTemplateFile);
+         if (config.TEMPLATE_PATH) {
+            templateFilePath = path.isAbsolute(config.TEMPLATE_PATH) ? config.TEMPLATE_PATH : path.join(rootPath, config.TEMPLATE_PATH);
          }
       } catch (error) {
          console.error("Error reading or parsing reisetech.config:", error);
@@ -66,7 +63,7 @@ const vueTemplate = fs
    .readFileSync(templateFilePath, "utf-8")
    .toString()
    .replace(/dynamicClassName/g, dash(componentName))
-   .replace(/ComponentName/g, pascal(componentName));
+   .replace(/ComponentName/g, componentName);
 
 const fileName = `${componentName}.vue`;
 // Create a new file with the component name if doesn't exist
